@@ -1,0 +1,37 @@
+aid: examity
+name: Examity Pricing & Plans
+url: https://www.examity.com/pricing/
+description: >-
+  Examity does not publish a self-service price list. Pricing is a custom quote
+  scoped to an institution's exam volume and proctoring mix (automated vs. live vs.
+  audit), and is arranged through Examity's sales team. Publicly reported reference
+  points from institutions and third-party review sites are captured below for
+  context only - actual pricing is contract-negotiated and there is no public API
+  billing tier.
+pricingModel: contact-sales
+pricingUnit: per-exam / per-student (institutional flat rates for larger clients)
+apiAccessModel: >-
+  API and LTI integration access is part of an institutional/partner agreement.
+  There is no public developer plan or self-service API key; integration keys are
+  issued on request via developers@examity.com.
+referencePoints:
+- note: Reported per-exam range across proctoring types (third-party review sites)
+  amount: $4 - $30+ per exam
+- note: Example institution live-virtual proctoring rate (illustrative, varies by school)
+  amount: ~$18 first hour, ~$10 each additional hour
+- note: Example institution live-standard proctoring rate (illustrative, varies by school)
+  amount: ~$15 first hour, ~$8 each additional hour
+proctoringTypes:
+- Automated (AI/ML) proctoring
+- Live proctoring
+- Audit-based (record and review) proctoring
+- ID / identity verification
+sources:
+- url: https://www.examity.com/pricing/
+  note: Official pricing page - directs to contact sales for a custom quote.
+- url: https://www.capterra.com/p/230531/Examity/
+  note: Third-party listing; pricing described as custom quote / not published.
+disclaimer: >-
+  Figures above are publicly reported reference points, not an Examity price list,
+  and were not confirmed against a machine-readable Examity billing API (none is
+  public). Treat as indicative only.

@@ -1,0 +1,90 @@
+aid: examity
+name: Examity
+review:
+  question: Does Examity expose a documented public WebSocket API?
+  answer: false
+  date: '2026-07-05'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was authored. Examity does not publish any developer
+    documentation, so there is no documented transport of any kind to model -
+    let alone a server-push WebSocket (ws:// or wss://) or SSE surface. The
+    programmatic surface Examity does expose to LMS and platform partners is a
+    request/response integration: IMS LTI single sign-on (consumer key plus a
+    shared secret) for launch, and a partner integration REST API for exam,
+    appointment, session, and result exchange. Both are gated behind a partner
+    agreement and are not publicly documented. There is no evidence of a public
+    real-time or streaming WebSocket API.
+findings:
+  summary: |
+    Examity does not publish a documented public WebSocket API - and, in fact,
+    does not publish a public developer API at all. Examity is an online exam
+    proctoring / test-integrity platform (automated AI proctoring, live
+    proctoring, audit review, and ID verification) sold to universities,
+    certification bodies, and enterprises. Its integration model is
+    partner/LMS-facing: single sign-on via IMS Learning Tools Interoperability
+    (LTI), which requires a consumer key and a shared secret, plus a partner
+    integration REST API that platform vendors use to register exams, schedule
+    proctoring appointments, launch monitored sessions, and pull back
+    completion status and integrity flags. Integration keys and the integration
+    manual are provided on request through developers@examity.com; there is no
+    self-service developer portal, no public API reference, and no published
+    OpenAPI. No WebSocket, SSE, or other server-push transport is documented
+    anywhere in Examity's public materials.
+  accessModel: |
+    Gated / partner-only. There is no public sign-up for API access. LMS SSO is
+    provisioned with an LTI consumer key and shared secret; deeper REST
+    integration keys and the integration manual come from developers@examity.com
+    under an institutional or partner agreement. Because nothing is publicly
+    documented, the APIs listed in apis.yml are modeled (endpointsModeled: true)
+    from the well-known integration flow rather than transcribed from a
+    published reference, and no OpenAPI, endpoint list, or base URL is asserted.
+  transports:
+    - protocol: LTI (SSO)
+      scheme: https
+      documented: false
+      note: IMS LTI single sign-on using a consumer key plus shared secret. Request/response launch handshake from the LMS; details provided to partners on request.
+    - protocol: REST
+      scheme: https
+      documented: false
+      note: Partner integration REST API for exams, appointments, sessions, and results. Not publicly documented; credentials via developers@examity.com.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented anywhere in Examity's public materials as of the review date.
+  endpointsConfirmedRest: []
+  endpointsModeledNote: |
+    The five APIs in apis.yml (Exams, Appointments/Scheduling, Sessions,
+    Results & Flags, Users) are modeled from Examity's documented integration
+    behavior with LMS partners. No concrete paths, methods, or base URLs are
+    published by Examity, so none are asserted here.
+sources:
+  - url: https://www.examity.com/
+    type: Website
+    note: Company site - proctoring products (automated, live, audit), ID verification, LMS integrations. Cloudflare-protected; blocked automated fetch during review.
+  - url: https://www.examity.com/pricing/
+    type: Pricing
+    note: Directs to contact sales for a custom quote; no public price list or API tier.
+  - url: https://www.linkedin.com/company/examity
+    type: LinkedIn
+    note: Company profile.
+  - url: mailto:developers@examity.com
+    type: Email
+    note: Named contact for integration keys and the integration manual (consumer key + secret for LTI SSO), per multiple LMS integration guides.
+  - url: https://integrationhub.brightspace.com/details/examity-online-proctoring
+    type: IntegrationGuide
+    note: D2L Brightspace integration listing for Examity online proctoring (LTI-based).
+  - url: https://www.webassign.net/manual/instructor_guide/common/canvas-examity-wa.htm
+    type: IntegrationGuide
+    note: WebAssign/Canvas Examity proctoring enablement guide (LTI SSO integration).
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket (or any server-push) surface exists, and Examity publishes no
+    public developer API. The real programmatic surface is a partner-gated LTI
+    SSO plus an undocumented integration REST API. No AsyncAPI document was
+    created because there is no documented event-driven or streaming transport
+    on Examity's own API to model. apis.yml documents the provider honestly as a
+    gated integration with modeled (not published) endpoints.

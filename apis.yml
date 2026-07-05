@@ -1,0 +1,125 @@
+aid: examity
+url: https://raw.githubusercontent.com/api-evangelist/examity/refs/heads/main/apis.yml
+name: Examity
+kind: company
+description: Examity is an online exam proctoring and test integrity platform used by
+  universities, certification bodies, and enterprises to authenticate test-takers and
+  monitor online assessments. It offers automated (AI/ML) proctoring, live proctoring,
+  audit-based review, and ID verification, and integrates with learning management
+  systems (Canvas, Blackboard, D2L Brightspace, Moodle, Sakai, Schoology, and others).
+  Examity's programmatic surface is a partner/LMS integration - single sign-on via
+  IMS LTI (consumer key plus shared secret) and a partner integration REST API that
+  platform vendors use to register exams, schedule proctoring appointments, launch
+  sessions, and retrieve completion status and integrity flags. Access is gated -
+  there is no public self-service developer portal, and integration keys plus the
+  integration manual are provided on request via developers@examity.com. Because no
+  endpoints are publicly documented, the APIs below are modeled from the known
+  integration model rather than a published reference.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Proctoring
+- Exam Integrity
+- Online Assessment
+- EdTech
+- LMS Integration
+- Identity Verification
+- Test Security
+created: '2026-07-05'
+modified: '2026-07-05'
+specificationVersion: '0.19'
+apis:
+- aid: examity:examity-exams-api
+  name: Examity Exams API
+  tags:
+  - Exams
+  - Proctoring
+  - Configuration
+  endpointsModeled: true
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.examity.com/
+  properties:
+  - url: mailto:developers@examity.com
+    type: Email
+  description: Register and manage the exams (assessments) that will be proctored -
+    exam name, proctoring type (automated, live, audit), duration, allowed resources,
+    rules, and the launch URL handed back to the LMS. Modeled from Examity's partner
+    integration; endpoints are not publicly documented and require partner
+    credentials issued via developers@examity.com.
+- aid: examity:examity-appointments-api
+  name: Examity Appointments (Scheduling) API
+  tags:
+  - Appointments
+  - Scheduling
+  - Calendar
+  endpointsModeled: true
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.examity.com/
+  properties:
+  - url: mailto:developers@examity.com
+    type: Email
+  description: Create, reschedule, and cancel proctoring appointments for a test-taker
+    against a registered exam, and query available proctor slots for live proctoring.
+    Modeled from Examity's partner integration and scheduling flows; not publicly
+    documented, partner-gated access.
+- aid: examity:examity-sessions-api
+  name: Examity Sessions API
+  tags:
+  - Sessions
+  - Launch
+  - Monitoring
+  endpointsModeled: true
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.examity.com/
+  properties:
+  - url: mailto:developers@examity.com
+    type: Email
+  description: Launch and track a proctoring session - authenticate the test-taker,
+    start the monitored exam session, and check live session status. Modeled from the
+    LMS launch and monitoring flow; endpoints are not publicly documented and require
+    partner credentials.
+- aid: examity:examity-results-flags-api
+  name: Examity Results & Flags API
+  tags:
+  - Results
+  - Integrity Flags
+  - Reporting
+  endpointsModeled: true
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.examity.com/
+  properties:
+  - url: mailto:developers@examity.com
+    type: Email
+  description: Retrieve session outcomes after a proctored exam - completion status,
+    integrity/violation flags, proctor notes, review verdicts, and links to recorded
+    session evidence, so the calling platform can post results back to the LMS
+    gradebook. Modeled from Examity's post-exam reporting; partner-gated, not publicly
+    documented.
+- aid: examity:examity-users-api
+  name: Examity Users API
+  tags:
+  - Users
+  - Provisioning
+  - Identity
+  endpointsModeled: true
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.examity.com/
+  properties:
+  - url: mailto:developers@examity.com
+    type: Email
+  description: Provision and manage the people involved in proctoring - test-takers,
+    instructors, and administrators - including profile details used for identity
+    verification. In practice most user context arrives through the LTI single
+    sign-on handshake (consumer key plus shared secret). Modeled, partner-gated,
+    not publicly documented.
+common:
+- type: Website
+  url: https://www.examity.com
+- type: LinkedIn
+  url: https://www.linkedin.com/company/examity
+- type: Plans
+  url: plans/examity-plans-pricing.yml
+- type: Email
+  url: mailto:developers@examity.com
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
