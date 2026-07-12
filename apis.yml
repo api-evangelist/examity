@@ -112,6 +112,8 @@ apis:
     sign-on handshake (consumer key plus shared secret). Modeled, partner-gated,
     not publicly documented.
 common:
+- type: DomainSecurity
+  url: security/examity-domain-security.yml
 - type: Website
   url: https://www.examity.com
 - type: LinkedIn
