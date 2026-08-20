@@ -108,6 +108,10 @@ apis:
 - aid: examity:examity-users-api
   name: Examity Users API
   tags:
+  - User
+  - Provisioning
+  - Identity
+  tags_raw:
   - Users
   - Provisioning
   - Identity
