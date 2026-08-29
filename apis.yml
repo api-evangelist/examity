@@ -15,6 +15,17 @@ description: Examity is an online exam proctoring and test integrity platform us
   integration manual are provided on request via developers@examity.com. Because no
   endpoints are publicly documented, the APIs below are modeled from the known
   integration model rather than a published reference.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: approval
