@@ -87,6 +87,10 @@ apis:
   name: Examity Sessions API
   tags:
   - Sessions
+  - Launches
+  - Monitoring
+  tags_raw:
+  - Sessions
   - Launch
   - Monitoring
   endpointsModeled: true
