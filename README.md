@@ -1,4 +1,4 @@
-# Examity (examity)
+# Examity
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,69 +64,93 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Examity is an online exam proctoring and test-integrity platform used by universities, certification bodies, and enterprises to authenticate test-takers and monitor online assessments. It offers automated (AI/ML) proctoring, live proctoring, audit-based (record-and-review) proctoring, and ID verification, and integrates with major learning management systems including Canvas, Blackboard, D2L Brightspace, Moodle, Sakai, and Schoology.
+Examity is an online exam proctoring and test integrity platform used by universities, certification bodies, and enterprises to authenticate test-takers and monitor online assessments. It offers automated (AI/ML) proctoring, live proctoring, audit-based review, and ID verification, and integrates with learning management systems (Canvas, Blackboard, D2L Brightspace, Moodle, Sakai, Schoology, and others). Examity's programmatic surface is a partner/LMS integration - single sign-on via IMS LTI (consumer key plus shared secret) and a partner integration REST API that platform vendors use to register exams, schedule proctoring appointments, launch sessions, and retrieve completion status and integrity flags. Access is gated - there is no public self-service developer portal, and integration keys plus the integration manual are provided on request via developers@examity.com. Because no endpoints are publicly documented, the APIs below are modeled from the known integration model rather than a published reference.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/examity/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/examity/refs/heads/main/apis.yml)
+**Areas:** Proctoring · Exam Integrity · Online Assessment · EdTech · LMS Integration · Identity Verification · Test Security
 
-## Access Model — please read
+## Examity on APIs.io
 
-Examity does **not** publish a public, self-service developer API. There is no developer portal, no public API reference, and no published OpenAPI. Its programmatic surface is a **partner / LMS integration**:
+Everything profiled for Examity is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/examity/](https://apis.io/providers/examity/)** — or go straight to one of the APIs or properties below.
 
-- **Single sign-on via IMS LTI** — provisioned with a **consumer key** and a **shared secret**, used to launch Examity from within an LMS.
-- **A partner integration REST API** — used by platform vendors to register exams, schedule proctoring appointments, launch monitored sessions, and retrieve completion status and integrity flags.
+### APIs (5)
 
-Both are **gated behind an institutional/partner agreement**. Integration keys and the integration manual are issued on request via **developers@examity.com**.
+- [Examity Exams API](https://apis.io/apis/examity/examity-exams-api/) — Register and manage the exams (assessments) that will be proctored - exam name, proctoring type (automated, live, audit), duration, allowed resources,…
+- [Examity Appointments (Scheduling) API](https://apis.io/apis/examity/examity-appointments-api/) — Create, reschedule, and cancel proctoring appointments for a test-taker against a registered exam, and query available proctor slots for live proctoring.…
+- [Examity Sessions API](https://apis.io/apis/examity/examity-sessions-api/) — Launch and track a proctoring session - authenticate the test-taker, start the monitored exam session, and check live session status. Modeled from the LMS…
+- [Examity Results & Flags API](https://apis.io/apis/examity/examity-results-flags-api/) — Retrieve session outcomes after a proctored exam - completion status, integrity/violation flags, proctor notes, review verdicts, and links to recorded…
+- [Examity Users API](https://apis.io/apis/examity/examity-users-api/) — Provision and manage the people involved in proctoring - test-takers, instructors, and administrators - including profile details used for identity…
 
-Because no endpoints, paths, or base URLs are publicly documented, the APIs listed below are **modeled** (`endpointsModeled: true`) from Examity's well-known integration flow with LMS partners — they are an honest map of the capability surface, **not** a transcription of a published reference. No OpenAPI, endpoint list, base URL, or rate-limit/FinOps document is asserted, because none is public.
+### Published properties
 
-## Tags
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-- Proctoring
-- Exam Integrity
-- Online Assessment
-- EdTech
-- LMS Integration
-- Identity Verification
-- Test Security
+#### Security (1)
 
-## Timestamps
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Created:** 2026-07-05
-- **Modified:** 2026-07-05
+- [Examity Domain Security](https://apis.io/security/examity/examity-domain-security/)
 
-## APIs (modeled)
+#### Plans and pricing (1)
 
-### Examity Exams API
-Register and manage the exams to be proctored — name, proctoring type (automated / live / audit), duration, allowed resources, rules, and the launch URL handed back to the LMS.
+Published plans, tiers and prices.
 
-### Examity Appointments (Scheduling) API
-Create, reschedule, and cancel proctoring appointments for a test-taker against a registered exam, and query available proctor slots for live proctoring.
+- [Examity Plans Pricing](https://apis.io/plans/examity/examity-plans-pricing/)
 
-### Examity Sessions API
-Launch and track a proctoring session — authenticate the test-taker, start the monitored exam session, and check live session status.
+## Where to find this API
 
-### Examity Results & Flags API
-Retrieve session outcomes after a proctored exam — completion status, integrity/violation flags, proctor notes, review verdicts, and links to recorded session evidence, for posting results back to the LMS gradebook.
-
-### Examity Users API
-Provision and manage test-takers, instructors, and administrators, including profile details used for identity verification. In practice most user context arrives through the LTI SSO handshake.
-
-## Pricing
-
-Examity does not publish a price list. Pricing is a **custom quote** scoped to an institution's exam volume and proctoring mix, arranged through sales. Publicly reported reference points (indicative only, not an Examity price list) put per-exam cost in the ~$4–$30+ range depending on proctoring type. See [`plans/examity-plans-pricing.yml`](plans/examity-plans-pricing.yml).
-
-## WebSocket / Real-time
-
-**No.** Examity publishes no documented public WebSocket (or any server-push / SSE) API. See [`review.yml`](review.yml).
-
-## Common Properties
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.examity.com)
-- [LinkedIn](https://www.linkedin.com/company/examity)
-- [Plans](plans/examity-plans-pricing.yml)
-- [Integration contact](mailto:developers@examity.com)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 4.4** — minimal · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 62.5 |
+| Contract quality | 0.0 |
+| Contract governance | 0.0 |
+| Operational transparency | 0.0 |
+| Developer ergonomics | 0.0 |
+| Access clarity | 0.0 |
+
+**Agent readiness 0.0** — human-only
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 5.9** — Education & Research
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/examity/](https://apis.io/providers/examity/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Examity: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/examity/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
